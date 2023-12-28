@@ -1,8 +1,8 @@
 # Sample .env file
 ## Needed for GenAI based image generation
-REACT_APP_AZOPENAI_API_VERSION = 2023-06-01-preview
-REACT_APP_AZOPENAI_API_KEY = 
-REACT_APP_AZOPENAI_RESOURCE_NAME = 
+- REACT_APP_AZOPENAI_API_VERSION = 2023-06-01-preview
+- REACT_APP_AZOPENAI_API_KEY = 
+- REACT_APP_AZOPENAI_RESOURCE_NAME = 
 
 # Getting Started with Create React App
 
