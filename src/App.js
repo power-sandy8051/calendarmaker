@@ -33,6 +33,8 @@ function App() {
 
     const [month, setMonth] = useState(undefined);
     const [monthImages, setMonthImages] = useState([]);
+    const [prompt, setPrompt] = useState(undefined);
+    const [isLoading, setIsLoading] = useState(false);
 
     const printCalendar = async (e) => {
 
@@ -111,6 +113,7 @@ function App() {
 
     return (
         <div className='container px-10'>
+            {isLoading && <div className="loader"></div>}
             <div className='row'>
                 <div className='col-8' ref={calendar}>
                     <CalendarLayout
@@ -118,10 +121,18 @@ function App() {
                         params={params}
                         setMonth={setMonth}
                         month={month}
+                        prompt={prompt}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
                     />
                 </div>
                 <div className='col-4'>
-                    <ControlPanel params={params} setParams={setParams} />
+                    <ControlPanel
+                        params={params}
+                        setParams={setParams}
+                        prompt={prompt}
+                        setPrompt={setPrompt}
+                    />
                 </div>
             </div>
         </div>

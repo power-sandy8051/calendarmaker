@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import client from "../services/api";
+
 import WineGlass from "../assets/images/wine-glass.jpg";
 
 const CalendarLayout = (props) => {
@@ -23,6 +26,16 @@ const CalendarLayout = (props) => {
         newDate.setMonth(date.getMonth() + months);
         setDate(newDate);
     }
+
+    const getImage = async () => {
+        props.setIsLoading(true);
+        let responseUrls = await client(props.prompt);
+        setImages((prev) => {
+            let newImages = responseUrls.map(img => img.url ? img.url : WineGlass);
+            return newImages;
+        });
+        props.setIsLoading(false);
+    };
 
     const updateImage = (e) => {
         let image = e.target.files[0];
@@ -52,7 +65,19 @@ const CalendarLayout = (props) => {
     useEffect(() => {
         if (props.month == undefined) return;
         setMonth(props.month);
-    }, [props.month])
+    }, [props.month]);
+
+    useEffect(() => {
+        if (props.prompt) {
+            getImage();
+        }
+    }, [props.prompt]);
+
+    useEffect(() => {
+        images.forEach(element => {
+            axios.get(element);
+        });
+    }, [images]);
 
     useEffect(() => {
 
@@ -101,7 +126,7 @@ const CalendarLayout = (props) => {
                 <div className="col days">
                     <h3>{day.dayName[0]}</h3>
                 </div>
-                {day.days.map((date, i) => <div className="col days" key={i}>{date}</div>)}
+                {day.days.map((date, k) => <div className="col days" key={k}>{date}</div>)}
             </div >
         </>);
     }
