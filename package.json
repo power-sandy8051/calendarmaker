@@ -2,6 +2,7 @@
   "name": "calendar",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/calendarmaker-genai",
   "dependencies": {
     "@azure/openai": "^1.0.0-beta.8",
     "@testing-library/jest-dom": "^5.17.0",
