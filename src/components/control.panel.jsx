@@ -66,7 +66,7 @@ const ControlPanel = (props) => {
         {colorPicker('Quote background Color:', 'qBcolor')}
         {colorPicker('Heading Color:', 'hdColor')}
         {colorPicker('Heading background Color:', 'hdBcolor')} 
-        {inputTextField('Theme Prompt', 'prompt')}       
+        {/* {inputTextField('Theme Prompt', 'prompt')}        */}
     </>);
 
 }
